@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Total OPC — Select your region. OPC 孵化平台 · 企业诊断与孵化 · OPC + AI 培训 · 资本运作。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Total OPC — Select Your Region</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./images/sqRoUBvxwRc.png">
+  <link rel="apple-touch-icon" href="./images/sqRoUBvxwRc.png">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --purple: #5b4fc4;
+      --gold: #c9a04a;
+      --ink: #1a1a1a;
+      --g500: #888;
+      --g400: #aaa;
+      --g300: #ccc;
+      --g200: #e5e5e5;
+      --white: #ffffff;
+      --serif: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      --mono: 'IBM Plex Mono', 'Courier New', monospace;
+    }
+
+    html { font-size:16px; -webkit-font-smoothing:antialiased; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── EARTH BACKGROUND ───────────────────────────────────── */
+    .bg-earth {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+
+    .bg-earth img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.55) saturate(1.15);
+    }
+
+    .bg-earth::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(26, 26, 56, 0.5) 0%,
+        rgba(91, 79, 196, 0.15) 40%,
+        rgba(26, 26, 56, 0.6) 100%
+      );
+    }
+
+    /* ── TOP ACCENT BAR ─────────────────────────────────────── */
+    .top-bar {
+      position: relative;
+      z-index: 10;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple) 0%, var(--gold) 50%, var(--purple) 100%);
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    .header {
+      position: relative;
+      z-index: 10;
+      padding: 36px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(26,26,56,0.2);
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-logo img { height: 44px; width: auto; }
+
+    .header-text {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .header-meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── MAIN ───────────────────────────────────────────────── */
+    .main {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 60px 80px;
+      opacity: 0;
+      animation: fadeUp 1s ease-out 0.3s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .hero-index {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: 56px;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 20px;
+      text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      color: rgba(255,255,255,0.6);
+      max-width: 460px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .hero-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 32px auto 0;
+      opacity: 0.6;
+    }
+
+    /* ── LANG GRID ──────────────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 920px;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 24px 26px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      text-decoration: none;
+      color: var(--white);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover {
+      border-color: rgba(201,160,74,0.4);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+
+    .card:hover .card-num { color: var(--gold); }
+
+    .card-lang {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 5px;
+      transition: color 0.3s;
+    }
+
+    .card:hover .card-lang { color: var(--gold); }
+
+    .card-region {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .card-arrow {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
+
+    .card:hover .card-arrow {
+      color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    .footer {
+      position: relative;
+      z-index: 10;
+      padding: 24px 60px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(26,26,56,0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-l, .footer-r {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .header, .footer { padding: 24px 40px; }
+      .main { padding: 48px 40px; }
+      .hero-title { font-size: 42px; }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 520px; }
+    }
+
+    @media (max-width: 640px) {
+      .header { padding: 18px 20px; flex-direction: column; gap: 10px; }
+      .main { padding: 36px 20px; }
+      .hero { margin-bottom: 36px; }
+      .hero-title { font-size: 28px; }
+      .hero-sub { font-size: 13px; }
+      .grid { grid-template-columns: 1fr; gap: 10px; max-width: 320px; }
+      .card { padding: 20px 18px; }
+      .footer { padding: 16px 20px; flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Earth Background -->
+  <div class="bg-earth">
+    <img src="./images/SkgqAmcHVS4.jpg" alt="">
+  </div>
+
+  <div class="top-bar"></div>
+
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">
+        <img src="./images/sqRoUBvxwRc.png" alt="Total OPC">
+      </div>
+      <span class="header-text">TOTAL OPC SDN. BHD.</span>
+    </div>
+    <div class="header-meta">Region Select</div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-index">01 — Welcome</div>
+      <h1 class="hero-title">Select Your <em>Region</em></h1>
+      <p class="hero-sub">
+        Empowering entrepreneurs across Asia with AI-driven business solutions.
+        Choose your preferred language to explore our platform.
+      </p>
+      <div class="hero-rule"></div>
+    </section>
+
+    <section class="grid">
+      <a href="./cn.html" class="card">
+        <span class="card-num">01</span>
+        <span class="card-lang">简体中文</span>
+        <span class="card-region">China</span>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="./uk.html" class="card">
+        <span class="card-num">02</span>
+        <span class="card-lang">English</span>
+        <span class="card-region">United Kingdom</span>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="./my.html" class="card">
+        <span class="card-num">03</span>
+        <span class="card-lang">Bahasa Melayu</span>
+        <span class="card-region">Malaysia</span>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="./hk.html" class="card">
+        <span class="card-num">04</span>
+        <span class="card-lang">繁體中文</span>
+        <span class="card-region">Hong Kong</span>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="./th.html" class="card">
+        <span class="card-num">05</span>
+        <span class="card-lang">ภาษาไทย</span>
+        <span class="card-region">Thailand</span>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="./id.html" class="card">
+        <span class="card-num">06</span>
+        <span class="card-lang">Bahasa Indonesia</span>
+        <span class="card-region">Indonesia</span>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="./jp.html" class="card">
+        <span class="card-num">07</span>
+        <span class="card-lang">日本語</span>
+        <span class="card-region">Japan</span>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="./kr.html" class="card">
+        <span class="card-num">08</span>
+        <span class="card-lang">한국어</span>
+        <span class="card-region">Korea</span>
+        <span class="card-arrow">→</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-l">© 2026 Total OPC Sdn. Bhd.</div>
+    <div class="footer-r">All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

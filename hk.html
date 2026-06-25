@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOTAL OPC SDN. BHD. — OPC 孵化平臺 | OPC + AI 培訓 · 企業診斷與孵化 · 資本運作</title>
+  <meta name="description" content="馬來西亞 OPC 孵化平臺，三個方向：OPC + AI 培訓、企業診斷與孵化、資本運作。面向獨立創始人。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./images/sqRoUBvxwRc.png">
+  <link rel="apple-touch-icon" href="./images/sqRoUBvxwRc.png">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      /* === 革命：去沉加希望（暖白主调 + 深蓝点缀）=== */
+      --ink:#0a1628;        /* 深蓝黑 — 主要文字 / 深色段底（仅 Hero/Global 用） */
+      --blue-deep:#122849;  /* 深蓝（Global 段用，比 ink 更蓝） */
+      --paper:#f5f0e1;      /* 米色温暖背景（替代 --paper #0d1929） */
+      --white:#fff;--off:#faf6ed;--sand:#f3ebd9;
+      --g100:#faf6ed;--g200:#ece6d4;--g300:#d6cdb6;--g400:#8a8473;--g500:#5e5848;--g600:#3a3528;--g700:#1f1c14;
+      --blue:#1e3a5f;       /* 链接/数据/规则（保留） */
+      --purple:#5b4fc4;     /* 紫色 accent（Pentagram Editorial 用） */
+      --gold:#c9a04a;       /* 高亮/几何符号（保留） */
+      --orange:#ff6b35;     /* 活力/CTA（保留） */
+      --rule:#2a3142;       /* 深色段边框 */
+      --rule-light:rgba(201,160,74,.25); /* 浅色段金色透明边框 */
+      /* === 字体系统：英文 didone + 中文宋体，视觉和谐 === */
+      --serif:'Noto Serif TC','Noto Serif SC','Source Han Serif TC',Georgia,'Times New Roman',serif;
+      --serif-en:'Playfair Display','DM Serif Display','Fraunces',Georgia,'Noto Serif TC','Noto Serif SC','Source Han Serif TC',serif;
+      --sans:'Inter','Noto Sans TC','Noto Sans SC',-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang TC','PingFang SC',sans-serif;
+      --sans-cn:'Noto Sans TC','Noto Sans SC','PingFang TC','PingFang SC',-apple-system,sans-serif;
+      --display:'Fraunces','Playfair Display','Noto Serif TC','Noto Serif SC',Georgia,serif;
+      --display-cn:'Noto Serif TC','Noto Serif SC','Source Han Serif TC',Georgia,serif;
+      --mono:'JetBrains Mono','IBM Plex Mono','Courier New',monospace;
+    }
+    html{font-size:18px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
+    body{font-family:var(--sans);color:var(--ink);background:var(--off);line-height:1.78;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;font-feature-settings:'kern' 1,'liga' 1,'calt' 1,'ss01' 1;letter-spacing:.01em}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto;display:block}
+    ::selection{background:var(--blue);color:#fff}
+
+    /* ── NAV ── */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:200;height:88px;transition:all .4s}
+    .nav.scrolled{background:rgba(250,246,237,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(30,58,95,.12);box-shadow:0 4px 24px -8px rgba(10,22,40,.08)}
+    .nav-in{max-width:1440px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:100%}
+    .nav-logo{display:flex;align-items:center;gap:12px}
+    .nav-logo img{height:65px}
+    .nav-brand{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:.5px;color:#fff;transition:color .4s}
+    .nav.scrolled .nav-brand{color:var(--ink)}
+    .nav-right{display:flex;align-items:center;gap:40px}
+    .nav-link{font-size:16px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.75);transition:color .3s;position:relative;font-family:var(--mono)}
+    .nav.scrolled .nav-link{color:rgba(30,58,95,.7)}
+    .nav-link:hover{color:#fff}
+    .nav.scrolled .nav-link:hover{color:var(--orange)}
+    .nav-en{font-size:14px;font-weight:700;letter-spacing:2px;color:rgba(201,160,74,.85);transition:color .3s}
+    .nav.scrolled .nav-en{color:rgba(201,160,74,.7)}
+    .nav-en:hover{color:#fff}
+    .nav.scrolled .nav-en:hover{color:var(--orange)}
+    .nav-cta{padding:10px 22px;border:1px solid rgba(255,255,255,.5);font-size:14px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#fff;transition:all .3s;font-family:var(--mono)}
+    .nav.scrolled .nav-cta{border-color:var(--blue);color:var(--blue)}
+    .nav-cta:hover{background:#fff;color:var(--ink)}
+    .nav.scrolled .nav-cta:hover{background:var(--blue);color:#fff}
+    /* ── LANG SWITCHER (v8.1 dropdown) ── */
+    .lang-switcher{position:relative;display:inline-block}
+    .lang-btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(201,160,74,.5);padding:9px 14px;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(201,160,74,.9);cursor:pointer;transition:all .3s;line-height:1}
+    .nav.scrolled .lang-btn{color:rgba(30,58,95,.85);border-color:rgba(30,58,95,.3)}
+    .lang-btn:hover{color:#fff;border-color:rgba(201,160,74,.85)}
+    .nav.scrolled .lang-btn:hover{color:var(--blue);border-color:var(--blue)}
+    .lang-chevron{transition:transform .3s cubic-bezier(.4,0,.2,1);opacity:.7}
+    .lang-switcher.open .lang-chevron{transform:rotate(180deg);opacity:1}
+    .lang-menu{position:absolute;top:calc(100% + 10px);right:0;min-width:180px;background:#fff;border:1px solid var(--ink);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s,transform .25s,visibility .25s;z-index:300;padding:6px 0}
+    .lang-switcher.open .lang-menu{opacity:1;visibility:visible;transform:translateY(0)}
+    .lang-option{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink);transition:background .2s,color .2s;border-bottom:1px solid rgba(30,58,95,.08);line-height:1}
+    .lang-option:last-child{border-bottom:none}
+    .lang-option:hover{background:rgba(91,79,196,.06);color:var(--purple)}
+    .lang-option-code{font-weight:700;color:var(--ink);transition:color .2s}
+    .lang-option:hover .lang-option-code{color:var(--purple)}
+    .lang-option-name{font-size:10px;font-weight:500;letter-spacing:1px;color:var(--g500);text-transform:none;font-family:var(--sans)}
+
+    @media(max-width:1024px){.nav-link{display:none}.lang-switcher{display:inline-block}.nav-cta{display:none}}
+    @media(max-width:640px){.nav-in{padding:0 20px}.nav-brand{font-size:19px;letter-spacing:0}.nav-logo img{height:52px}}
+
+    /* ── HERO ── */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+    .hero-geom{position:absolute;z-index:2;pointer-events:none}
+    .hero-geom-circle{top:18%;left:8%;width:80px;height:80px;border:1px solid rgba(201,160,74,.5);border-radius:50%}
+    .hero-geom-tri{bottom:25%;right:12%;width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-bottom:42px solid rgba(201,160,74,.35)}
+    .hero-geom-line{top:42%;right:18%;width:80px;height:1px;background:rgba(201,160,74,.6)}
+    .hero-geom-square{top:62%;left:14%;width:8px;height:8px;background:var(--orange);transform:rotate(45deg);opacity:.5}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(170deg,rgba(10,22,40,.45) 0%,rgba(10,22,40,.2) 50%,rgba(10,22,40,.78) 100%);z-index:1}
+    .hero-overlay-warm{position:absolute;inset:0;background:linear-gradient(170deg,rgba(255,107,53,.08) 0%,rgba(201,160,74,.1) 50%,rgba(30,58,95,.18) 100%);mix-blend-mode:screen;z-index:1;pointer-events:none}
+    .hero-inner{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:0 48px 100px;width:100%;padding-top:200px}
+    .hero-kicker{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:32px}
+    .hero h1{font-family:var(--serif-en);font-size:clamp(48px,8vw,112px);font-weight:900;line-height:1.06;letter-spacing:-2px;color:#fff;max-width:1200px;margin-bottom:32px}
+    .hero h1 em{font-family:var(--display-cn);font-style:normal;color:var(--gold);font-weight:600;font-size:.66em;letter-spacing:.5px;line-height:1;display:inline-block;padding:0 .05em}
+    .hero-body{max-width:600px;margin-bottom:48px}
+    .hero-body p{font-size:18px;line-height:1.95;color:rgba(255,255,255,.78);margin-bottom:12px;letter-spacing:.1px}
+    .hero-body p:last-child{font-size:15px;color:rgba(255,255,255,.45);font-style:normal;font-family:var(--display-cn);font-weight:500;margin-top:18px;letter-spacing:.5px;padding-left:14px;border-left:1px solid rgba(201,160,74,.4)}
+    .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:18px 38px;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border:none;transition:all .35s cubic-bezier(.4,0,.2,1);font-family:var(--mono);white-space:nowrap}
+    .btn-fill{background:#fff;color:var(--ink)}
+    .btn-fill:hover{background:var(--blue);color:#fff}
+    .btn-ghost{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.25)}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.7);color:#fff}
+
+    .hero-stats-bar{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:0 48px}
+    .hero-stats{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}
+    .hero-stat{flex:1;padding:56px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+    .hero-stat:not(:last-child)::after{content:'';position:absolute;top:18%;bottom:18%;right:0;width:1px;background:rgba(255,255,255,.14)}
+    .hero-stat-num{font-size:clamp(26px,3.4vw,36px);font-weight:800;color:#fff;line-height:1.05;font-family:var(--sans);text-align:center;letter-spacing:-.5px;display:flex;align-items:baseline;justify-content:center;gap:8px;flex-wrap:nowrap;width:100%}
+    .hero-stat-num .u{font-size:16px;font-weight:600;color:rgba(255,255,255,.55);margin-left:2px}
+    .hero-stat-num .p{color:var(--gold);letter-spacing:.5px}
+    .hero-stat-num .g{color:#c9a84c}
+    .hero-stat-num .plus{color:var(--gold);font-weight:600;opacity:.7;font-size:.85em}
+    .hero-stat-lbl{font-size:11px;font-weight:700;letter-spacing:4.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:24px;text-align:center;white-space:nowrap;width:100%}
+
+    @media(max-width:1024px){
+      .hero-inner{padding:0 32px 80px;padding-top:160px}
+      .hero-stats-bar{padding:0 32px}
+      .hero-ctas{gap:12px}
+    }
+    @media(max-width:640px){
+      .hero-inner{padding:0 20px 60px;padding-top:140px}
+      .hero-stats-bar{padding:0 20px}
+      .hero-stats{flex-wrap:wrap;gap:0}
+      .hero-stat{flex:1 1 50%;border-bottom:1px solid rgba(255,255,255,.06);padding:32px 16px}
+      .hero-stat:nth-child(odd)::after{display:none}
+      .hero-stat:nth-child(even)::after{top:15%;bottom:15%;background:rgba(255,255,255,.1)}
+      .hero-stat:nth-last-child(-n+2){border-bottom:none}
+      .hero-stat-num{font-size:28px;gap:6px;flex-wrap:nowrap}
+      .hero-stat-lbl{font-size:10px;letter-spacing:3px;margin-top:16px}
+      .hero-ctas{flex-direction:column;width:100%}
+      .hero-ctas .btn{width:100%;justify-content:center}
+      .hero-geom-circle{width:60px;height:60px;top:14%;left:4%}
+      .hero-geom-tri{bottom:18%;right:6%;border-left-width:18px;border-right-width:18px;border-bottom-width:32px}
+      .hero-geom-line{width:60px;top:38%;right:8%}
+    }
+
+    /* ── SECTION UTIL ── */
+    
+    /* ════════════════════════════════════════
+       v6.0 HERO MANIFESTO — 极简全屏铭文
+       调性：Apple / Vitra / Dieter Rams
+       抛弃：kicker / h1 / body / ctas / stats
+       保留：bg / overlay / 极简几何
+       ════════════════════════════════════════ */
+    .hero-v6 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+    .hero-v6 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:saturate(1.25) contrast(1.02) brightness(1.03);transform:scale(1.02)}
+    .hero-v6 .hero-overlay{position:absolute;inset:0;background:linear-gradient(170deg,rgba(10,22,40,.55) 0%,rgba(10,22,40,.30) 45%,rgba(10,22,40,.70) 100%);z-index:1}
+    .hero-v6 .hero-overlay-warm{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,22,40,.85) 100%);z-index:2}
+    .hero-v6 .hero-geom{position:absolute;z-index:3;opacity:.35}
+    .hero-v6 .hero-geom-tri{bottom:14%;right:5%;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid rgba(201,160,74,.5)}
+    .hero-v6 .hero-geom-line{width:48px;height:1px;bottom:14%;right:14%;background:rgba(201,160,74,.5)}
+    .hero-v6-content{position:relative;z-index:4;height:100vh;min-height:680px;max-width:1440px;margin:0 auto;padding:0 48px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:96px;color:#fff}
+    .hero-v6-kicker{font-family:var(--mono);font-size:15px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:rgba(201,160,74,.85);margin-bottom:32px;display:flex;align-items:center;gap:14px}
+    .hero-v6-kicker::before{content:'';width:32px;height:1px;background:rgba(201,160,74,.7)}
+    .hero-v6-title{font-family:var(--display-cn);font-weight:900;line-height:1.05;letter-spacing:-1px;margin:0 0 24px 0}
+    .hero-v6-line{display:block;font-size:clamp(28px,5.0vw,74px);font-weight:800;line-height:1.18;letter-spacing:-.5px}
+    .hero-v6-line:nth-child(2){font-family:var(--display-cn);font-weight:800}
+    .hero-v6-line-em{font-family:var(--display);font-style:italic;font-weight:400;color:rgba(201,160,74,.95);font-size:clamp(44px,7vw,104px);letter-spacing:-2px;margin-top:-8px}
+    .hero-v6-sub{font-family:var(--mono);font-style:normal;font-size:clamp(13px,1.2vw,16px);font-weight:600;letter-spacing:5px;text-transform:uppercase;color:rgba(201,160,74,.85);margin-bottom:80px;line-height:1.5}
+    .hero-v6-foot{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+    .hero-v6-line-mark{width:32px;height:1px;background:rgba(255,255,255,.4)}
+    .hero-v6-arrow{font-size:14px;animation:bob 2.2s ease-in-out infinite}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+    @media(max-width:1024px){.hero-v6-content{padding:0 32px;padding-bottom:80px}.hero-v6-line{font-size:clamp(22px,4.5vw,56px);line-height:1.22}}
+    @media(max-width:640px){.hero-v6-content{padding:0 20px;padding-bottom:64px;justify-content:center}.hero-v6-kicker{font-size:14px;letter-spacing:3px;margin-bottom:24px}.hero-v6-line{font-size:22px;line-height:1.32;letter-spacing:0}.hero-v6-sub{font-size:12px;letter-spacing:3px;margin-bottom:56px}.hero-v6-foot{font-size:10px;letter-spacing:2px}.hero-v6-geom-tri,.hero-v6-geom-line{display:none}}
+
+    /* ════════════════════════════════════════
+       v6.0 ABOUT MANIFESTO — 黑底大字宣言
+       抛弃：about-layout / about-card / about-pull / about-body
+       新增：100vh / 黑底 / 居中大字铭文
+       ════════════════════════════════════════ */
+    .about-v7{position:relative;background:var(--off);color:var(--ink);padding:80px 0 100px;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+    .about-v7-header{display:flex;align-items:center;gap:24px;max-width:1440px;margin:0 auto 80px;padding:0 48px}
+    .about-v7-num{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:2px;color:var(--purple);opacity:.85;font-variant-numeric:tabular-nums}
+    .about-v7-label{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--g400)}
+    .about-v7-rule{flex:1;height:1px;background:linear-gradient(90deg,rgba(91,79,196,.4) 0%,rgba(201,160,74,.4) 50%,transparent 100%)}
+    .about-v7-body{display:grid;grid-template-columns:7fr 5fr;gap:96px;max-width:1440px;margin:0 auto;padding:0 48px;align-items:start;position:relative;z-index:1}
+    .about-v7-kicker{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--purple);letter-spacing:5px;margin-bottom:40px;display:flex;align-items:center;gap:14px;text-transform:uppercase}
+    .about-v7-kicker::before{content:'';width:48px;height:1px;background:var(--gold)}
+    .about-v7-kicker-cn{font-family:var(--serif);font-weight:400;letter-spacing:8px;font-size:18px;margin-left:6px;color:var(--purple);text-transform:none}
+    .about-v7-title{font-family:var(--serif-en);font-weight:900;line-height:1.06;letter-spacing:-2px;margin:0 0 24px 0;color:var(--ink);font-feature-settings:'kern' 1,'liga' 1}
+    .about-v7-title .line-1{display:block;font-size:clamp(56px,8vw,128px);font-weight:900;color:var(--ink);letter-spacing:-2px}
+    .about-v7-title .line-2{display:block;font-family:var(--display-cn);font-style:normal;font-weight:700;font-size:clamp(48px,6.5vw,104px);color:var(--purple);letter-spacing:-1px;margin-top:8px;line-height:1.05}
+    .about-v7-title .line-2 em{font-family:var(--display);font-style:italic;font-weight:500;color:var(--gold);font-size:.5em;letter-spacing:0;margin-left:.15em;vertical-align:.15em;display:inline-block}
+    .about-v7-info-col{display:flex;flex-direction:column;gap:48px;padding-top:0}
+    .about-v7-manifesto{padding:0 0 0 24px;border-left:1px solid rgba(91,79,196,.25);position:relative}
+    .about-v7-manifesto::before{content:'';position:absolute;left:-1px;top:0;width:1px;height:24px;background:var(--purple)}
+    .about-v7-manifesto p{font-family:var(--serif);font-size:clamp(16px,1.35vw,19px);font-weight:400;line-height:1.95;color:var(--g600);letter-spacing:.05em;margin:0;max-width:520px;text-align:justify;text-justify:inter-ideograph}
+    .about-v7-manifesto p strong{font-weight:700;color:var(--ink);font-family:var(--serif);letter-spacing:0}
+    .about-v7-approach{padding:32px 0 0;border-top:1px solid rgba(10,22,40,.12)}
+    .approach-title{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--g400);margin-bottom:24px;display:flex;align-items:center;gap:14px;font-variant-numeric:tabular-nums}
+    .approach-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(91,79,196,.3) 0%,transparent 100%)}
+    .approach-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px}
+    .approach-list li{display:grid;grid-template-columns:48px 1fr;grid-template-rows:auto auto;gap:6px 18px;padding-bottom:18px;border-bottom:1px dashed rgba(10,22,40,.12);align-items:baseline}
+    .approach-list li:last-child{border-bottom:none;padding-bottom:0}
+    .approach-icon{grid-row:1/3;grid-column:1;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid var(--purple);position:relative;background:#fff;align-self:start;margin-top:2px}
+    .approach-icon svg{width:18px;height:18px}
+    .approach-num{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--purple);opacity:.6;font-variant-numeric:tabular-nums;grid-row:2;grid-column:1;justify-self:center;margin-top:-2px}
+    .approach-name{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:.02em;line-height:1.3;grid-row:1;grid-column:2}
+    .approach-text{font-family:var(--sans);font-size:13px;font-weight:400;color:var(--g500);letter-spacing:.05em;line-height:1.5;grid-row:2;grid-column:2}
+    .about-v7-meta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 48px;padding-top:32px;border-top:1px solid rgba(10,22,40,.1)}
+    .about-v7-meta-item{display:flex;flex-direction:column;gap:8px}
+    .meta-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--g400);margin:0}
+    .meta-value{font-family:var(--display);font-size:18px;font-weight:500;color:var(--ink);letter-spacing:.02em;margin:0;font-variant-numeric:tabular-nums;line-height:1.2}
+    .about-v7-illustration{position:absolute;top:340px;right:6%;z-index:0;opacity:1;pointer-events:none;width:280px;height:280px}
+    .about-v7-illustration .illu-center{position:absolute;left:50%;top:50%;width:80px;height:80px;border:1.5px solid var(--purple);border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#fff 30%,transparent 70%)}
+    .about-v7-illustration .illu-center::after{content:'';position:absolute;left:50%;top:50%;width:24px;height:24px;background:var(--gold);border-radius:50%;transform:translate(-50%,-50%)}
+    .about-v7-illustration .illu-ring{position:absolute;left:50%;top:50%;width:200px;height:200px;border:1px dashed rgba(91,79,196,.4);border-radius:50%;transform:translate(-50%,-50%)}
+    .about-v7-illustration .illu-outer{position:absolute;left:50%;top:50%;width:280px;height:280px;border:1px solid rgba(201,160,74,.2);border-radius:50%;transform:translate(-50%,-50%)}
+    .about-v7-illustration .illu-node{position:absolute;left:50%;top:50%;width:14px;height:14px;background:var(--purple);border-radius:50%;transform-origin:center;margin-left:-7px;margin-top:-7px}
+    .about-v7-illustration .illu-node.gold{background:var(--gold)}
+    .about-v7-illustration .illu-node.square{background:transparent;border:1.5px solid var(--purple);width:12px;height:12px;border-radius:0;margin-left:-6px;margin-top:-6px}
+    .about-v7-illustration .illu-node.triangle{background:transparent;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid var(--gold);margin-left:-7px;margin-top:-12px;border-radius:0}
+    .about-v7-illustration .illu-line{position:absolute;left:50%;top:50%;width:100px;height:1px;background:linear-gradient(90deg,var(--purple) 0%,transparent 100%);transform-origin:0 0}
+    .about-v7-illustration .illu-line.alt{background:linear-gradient(90deg,var(--gold) 0%,transparent 100%)}
+    .about-v7-geom{position:absolute;top:60px;right:5%;z-index:0;opacity:.18;pointer-events:none}
+    .geom-circle{width:120px;height:120px;border:1px solid var(--purple);border-radius:50%;position:relative}
+    .geom-cross{position:absolute;left:50%;top:50%;width:70px;height:1px;background:var(--gold);transform:translate(-50%,-50%)}
+    .geom-cross::after{content:'';position:absolute;left:50%;top:-35px;width:1px;height:70px;background:var(--gold);transform:translateX(-50%)}
+    @media(max-width:1024px){.about-v7{padding:64px 0 80px;min-height:auto;display:block}.about-v7-header{padding:0 32px;margin-bottom:64px}.about-v7-body{grid-template-columns:1fr;gap:64px;padding:0 32px}.about-v7-title .line-1{font-size:clamp(48px,10vw,96px)}.about-v7-title .line-2{font-size:clamp(40px,8vw,80px)}.about-v7-illustration{width:220px;height:220px;top:auto;bottom:40px;right:50%;transform:translateX(50%);position:relative;margin:32px auto 0}.about-v7-illustration .illu-outer{width:220px;height:220px}.about-v7-illustration .illu-ring{width:160px;height:160px}}
+    @media(max-width:640px){.about-v7{padding:48px 0 64px;min-height:auto;display:block}.about-v7-header{padding:0 20px;margin-bottom:48px;gap:16px}.about-v7-num{font-size:12px}.about-v7-label{font-size:10px;letter-spacing:3px}.about-v7-body{grid-template-columns:1fr;gap:48px;padding:0 20px}.about-v7-kicker{font-size:11px;letter-spacing:4px;margin-bottom:24px}.about-v7-kicker-cn{font-size:16px;letter-spacing:6px}.about-v7-kicker::before{width:32px}.about-v7-title .line-1{font-size:48px}.about-v7-title .line-2{font-size:36px;margin-top:4px}.about-v7-manifesto{padding-left:18px}.about-v7-manifesto p{font-size:15px;line-height:1.85}.about-v7-approach{gap:16px}.approach-list li{grid-template-columns:42px 1fr;gap:4px 14px;padding-bottom:14px}.approach-name{font-size:18px}.approach-text{font-size:12px}.about-v7-meta-grid{grid-template-columns:1fr;gap:20px}.about-v7-illustration{width:180px;height:180px}.about-v7-illustration .illu-outer{width:180px;height:180px}.about-v7-illustration .illu-ring{width:130px;height:130px}.about-v7-illustration .illu-center{width:60px;height:60px}.about-v7-illustration .illu-center::after{width:18px;height:18px}}
+
+    .sec{padding:80px 0;min-height:100vh}
+    .sec-in{max-width:1440px;margin:0 auto;padding:0 48px}
+    .sec-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--blue);margin-bottom:20px}
+    .sec-title{font-family:var(--serif-en);font-size:clamp(30px,4.4vw,58px);font-weight:900;line-height:1.15;letter-spacing:-1.5px}
+    .sec-title em{font-family:var(--display-cn);font-style:normal;color:var(--blue);font-weight:600;font-size:.92em;letter-spacing:.3px}
+    .rule{width:48px;height:3px;background:linear-gradient(90deg,var(--blue) 0%,var(--gold) 100%);margin:28px 0;border-radius:0}
+    @media(max-width:1024px){.sec{padding:64px 0;min-height:auto}.sec-in{padding:0 32px}}
+    @media(max-width:640px){.sec{padding:48px 0;min-height:auto}.sec-in{padding:0 20px}}
+
+    /* ── IMAGE DIVIDER ── */
+    .img-divider{position:relative;height:420px;overflow:hidden}
+    .img-divider img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1) contrast(1.05) brightness(.98)}
+    .img-divider .caption{position:absolute;bottom:0;left:0;right:0;padding:24px 48px;background:linear-gradient(transparent,rgba(0,0,0,.55));z-index:1}
+    .img-divider .caption span{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);font-family:var(--mono)}
+    @media(max-width:1024px){.img-divider{height:360px}}
+    @media(max-width:640px){.img-divider{height:200px}.img-divider .caption{padding:12px 20px}.img-divider .caption span{font-size:8px}}
+
+    /* ── SERVICES (table-style) ── */
+    .services{background:var(--off)}
+    .services .sec-label{font-size:20px;letter-spacing:6px;font-weight:600;margin-bottom:28px}
+    .services .sec-title{font-size:clamp(36px,5.2vw,70px);letter-spacing:-2px}
+    #why .sec-label{font-size:20px;letter-spacing:4px;font-weight:600;margin-bottom:18px}
+    #why .sec-title{font-size:38px;letter-spacing:-1px;font-weight:900}
+    .svc-header{display:block;margin-bottom:0;padding-bottom:56px}
+    .svc-header-right{font-size:17px;color:var(--g500);line-height:1.9;padding-top:32px;max-width:720px;font-weight:400;letter-spacing:.2px}
+
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink);border-bottom:1px solid var(--g200)}
+    .svc-card{padding:64px 44px 56px;display:flex;flex-direction:column;border-right:1px solid var(--g200);position:relative;transition:background .35s;background:transparent}
+    .svc-card:last-child{border-right:none}
+    .svc-card:hover{background:#fff}
+    .svc-card-phase{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--blue);margin-bottom:22px}
+    .svc-card-num{font-family:var(--serif);font-size:60px;font-weight:900;color:var(--ink);line-height:1;letter-spacing:-2.5px;margin-bottom:22px}
+    .svc-card-name{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:22px;letter-spacing:0}
+    .svc-card-desc{font-size:18px;color:var(--g500);line-height:1.85;font-weight:400;margin-bottom:36px;flex:1;letter-spacing:.1px}
+    .svc-card-fee{padding-top:28px;border-top:1px solid var(--g200);font-family:var(--mono);font-size:13px;color:var(--g600);line-height:1.9;letter-spacing:.3px}
+    .svc-card-fee-label{font-family:var(--sans);color:var(--g400);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;font-weight:600;display:block}
+    .svc-card-fee strong{color:var(--ink);font-weight:600;font-size:15px;display:inline-block;font-family:var(--serif);letter-spacing:.3px}
+    .svc-card-fee em{color:var(--blue);font-style:normal;font-weight:600}
+    .svc-card-cta{margin-top:28px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:8px;transition:gap .3s,color .3s}
+    .svc-card-cta:hover{gap:14px;color:var(--orange)}
+    .svc-card-cta span{font-size:15px;transition:transform .3s}
+    .svc-card-cta:hover span{transform:translateX(2px)}
+
+    @media(max-width:1024px){.svc-header{grid-template-columns:1fr;gap:24px;align-items:start;margin-bottom:0;padding-bottom:24px}.svc-header-right{justify-self:start;text-align:left;max-width:100%}.svc-grid{grid-template-columns:1fr}.svc-card{border-right:none;border-bottom:1px solid var(--g200);padding:48px 32px}.svc-card:last-child{border-bottom:none}}
+    @media(max-width:640px){.svc-card{padding:40px 24px}.svc-card-num{font-size:48px}.svc-card-name{font-size:24px}.svc-card-desc{font-size:15px;line-height:1.8}}
+
+    /* ── ABOUT (with company card on image) ── */
+    .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:640px}
+    .about-text-col{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+    .about-lead{font-size:18px;line-height:1.95;color:var(--g600);font-family:var(--serif);font-weight:400;margin-bottom:32px;letter-spacing:.1px}
+    .about-lead em{font-weight:700;color:var(--blue);font-style:normal}
+    .about-pull{font-family:var(--display);font-size:26px;font-weight:400;font-style:italic;line-height:1.45;color:var(--g700);margin:40px 0;padding:32px 0;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);max-width:500px}
+    .about-body{font-size:18px;line-height:2.0;color:var(--g500);margin-bottom:18px;font-weight:400}
+    .about-body strong{color:var(--ink);font-weight:600}
+    .about-img-col{position:relative;overflow:hidden}
+    .about-img-col img{width:100%;height:100%;object-fit:cover;filter:saturate(1.15) contrast(1.05) brightness(1.0)}
+    .about-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:40px;z-index:1}
+    .about-card{background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border:1px solid var(--gold);max-width:340px;box-shadow:0 12px 40px -16px rgba(10,22,40,.3)}
+    .about-card-top{padding:20px 24px 16px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--g200)}
+    .about-card-top img{height:48px}
+    .about-card-name{font-family:var(--serif);font-weight:700;font-size:14px}
+    .about-card-name-en{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--g400);margin-top:3px;font-family:var(--sans)}
+    .about-card-row{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;font-size:12px;border-bottom:1px solid rgba(0,0,0,.04)}
+    .about-card-row:last-child{border-bottom:none}
+    .about-card-row .l{color:var(--g400);font-size:10px;letter-spacing:.5px;text-transform:uppercase;font-family:var(--mono)}
+    .about-card-row .v{font-weight:600;font-family:var(--sans)}
+    @media(max-width:1024px){.about-layout{grid-template-columns:1fr}.about-img-col{height:480px;order:-1}.about-text-col{padding:64px 0}}
+    @media(max-width:640px){.about-img-col{height:360px}.about-text-col{padding:48px 0}.about-pull{font-size:22px}}
+    @media(max-width:480px){.about-lead{font-size:20px}}
+
+    /* ── METHOD (sticky + feat list) ── */
+    .hub{background:var(--off);position:relative;overflow:hidden}
+    .hub-layout{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start}
+    .hub-sticky{position:sticky;top:120px}
+    .hub-sticky::before{content:'';display:block;width:60px;height:3px;background:linear-gradient(90deg,var(--blue) 0%,var(--gold) 100%);margin-bottom:32px}
+    .hub-tag{display:inline-block;padding:6px 16px;border:1px solid var(--ink);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px;font-family:var(--mono)}
+    .hub-name{font-family:var(--serif);font-size:clamp(30px,4.6vw,56px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin-bottom:8px}
+    .hub-name-en{font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--g400);margin-bottom:32px;font-family:var(--sans)}
+    .hub-desc{font-size:18px;line-height:1.95;color:var(--g600);margin-bottom:16px;font-weight:400}
+    .hub-desc-en{font-size:18px;line-height:1.85;color:var(--g400);font-style:italic;margin-bottom:40px;font-family:var(--display);font-weight:400}
+    .hub-img{width:100%;height:280px;overflow:hidden;margin-top:32px}
+    .hub-img img{width:100%;height:100%;object-fit:cover;filter:saturate(1.2) contrast(1.05) brightness(1.0)}
+    .feat-list{display:flex;flex-direction:column}
+    .feat{padding:32px 0;border-bottom:1px solid var(--g200);display:grid;grid-template-columns:48px 1fr;gap:24px;align-items:start}
+    .feat:first-child{border-top:1px solid var(--g200)}
+    .feat-ico{width:48px;height:48px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;background:#fff;transition:all .3s}
+    .feat-ico svg{width:20px;height:20px;color:var(--blue);stroke-width:1.5;transition:color .3s}
+    .feat:hover .feat-ico{background:var(--gold);border-color:var(--gold)}
+    .feat:hover .feat-ico svg{color:#fff}
+    .feat h4{font-size:19px;font-weight:700;margin-bottom:2px;font-family:var(--sans)}
+    .feat-en{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;font-family:var(--mono)}
+    .feat p{font-size:18px;color:var(--g500);line-height:1.85;font-weight:400}
+    @media(max-width:1024px){.hub-layout{grid-template-columns:1fr;gap:48px}.hub-sticky{position:static}}
+    @media(max-width:640px){.hub-sticky>div:last-child{display:none}.feat{padding:20px 0;gap:14px}.feat-ico{width:40px;height:40px}.feat-ico svg{width:18px;height:18px}.feat h4{font-size:16px}.feat p{font-size:14px;line-height:1.8}}
+
+    /* ── WHY MALAYSIA (img left, list right) ── */
+    .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:64px;min-height:calc(100vh - 280px)}
+    .why-img-col{position:relative;overflow:hidden}
+    .why-img-col img{width:100%;height:100%;object-fit:cover;filter:saturate(1.2) contrast(1.05) brightness(1.0)}
+    .why-content-col{padding:0 0 0 80px;display:flex;flex-direction:column;justify-content:center}
+    .why-item{padding:36px 0;border-bottom:1px solid var(--g200)}
+    .why-item:first-child{border-top:2px solid var(--ink)}
+    .why-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:2px;color:var(--blue);margin-bottom:14px}
+    .why-item h3{font-family:var(--serif);font-size:24px;font-weight:700;margin-bottom:4px;line-height:1.3}
+    .why-item h3-en{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;font-family:var(--mono)}
+    .why-item p{font-size:18px;color:var(--g500);line-height:1.9;font-weight:400}
+    @media(max-width:1024px){.why-layout{grid-template-columns:1fr;min-height:auto}.why-img-col{height:420px;order:-1}.why-content-col{padding:48px 0 0}}
+    @media(max-width:640px){.why-img-col{height:280px}.why-item{padding:24px 0}.why-item h3{font-size:20px}.why-item p{font-size:15px;line-height:1.8}#why .sec-label{font-size:18px;letter-spacing:4px;margin-bottom:12px}#why .sec-title{font-size:26px;letter-spacing:-.5px}}
+
+    /* ── GLOBAL (dark section) ── */
+    .global{position:relative;overflow:hidden}
+    .global-bg{position:absolute;inset:0;z-index:0}
+    .global-bg img{width:100%;height:100%;object-fit:cover;opacity:.10;filter:grayscale(100%) brightness(.6)}
+    .global-content{position:relative;z-index:1;background:var(--blue-deep);color:var(--off);padding:80px 0;min-height:100vh;display:flex;align-items:center}
+    .global .sec-label{color:rgba(201,160,74,.55);font-size:14px;letter-spacing:6px}
+    .global .sec-title{color:var(--off)}
+    .global .sec-title em{color:var(--gold)}
+    .global .rule{background:linear-gradient(90deg,var(--blue) 0%,var(--gold) 100%);width:48px;height:3px;border-radius:0;margin:28px 0}
+    .global-intro{font-size:18px;line-height:1.95;color:rgba(250,246,237,.7);max-width:600px;margin-bottom:72px;font-weight:400}
+    .global-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid rgba(201,160,74,.2)}
+    .global-item{padding:44px 28px;border-right:1px solid rgba(201,160,74,.12);position:relative;transition:background .3s}
+    .global-item:last-child{border-right:none}
+    .global-item:hover{background:rgba(255,255,255,.03)}
+    .global-code{font-size:48px;font-weight:900;letter-spacing:3px;line-height:1;color:rgba(255,255,255,.92);margin-bottom:18px;font-family:var(--sans)}
+    .global-item h3{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:4px;line-height:1.3}
+    .global-item h3-en{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(201,160,74,.4);margin-bottom:16px;font-family:var(--mono)}
+    .global-item p{font-size:18px;color:rgba(250,246,237,.65);line-height:1.75;font-weight:400}
+    .global-line{width:24px;height:2px;background:var(--gold);margin-bottom:14px;opacity:.85}
+    @media(max-width:1024px){.global-grid{grid-template-columns:repeat(3,1fr)}.global-item{border-right:1px solid rgba(255,255,255,.08)}.global-item:nth-child(3n){border-right:none}}
+    @media(max-width:768px){.global-grid{grid-template-columns:1fr 1fr}.global-item:nth-child(2n){border-right:none}.global-item:nth-child(3n){border-right:1px solid rgba(255,255,255,.08)}}
+    @media(max-width:480px){.global-grid{grid-template-columns:1fr;gap:0}.global-item{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.06);padding:32px 20px}.global-item:last-child{border-bottom:none}.global-code{font-size:36px}.global-item h3{font-size:18px}.global-item p{font-size:15px;line-height:1.7}}
+
+    /* ── VISION (two columns with images) ── */
+    .vision-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:calc(100vh - 280px);position:relative}
+    .vision-col{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;position:relative}
+    .vision-col:first-child::after{content:'';position:absolute;top:8%;bottom:8%;right:-1px;width:2px;background:linear-gradient(180deg,transparent 0%,var(--blue) 25%,var(--gold) 75%,transparent 100%)}
+    .vision-col .sec-label{margin-bottom:24px}
+    .vision-col h3{font-family:var(--serif-en);font-size:clamp(22px,2.8vw,32px);font-weight:900;line-height:1.35;margin-bottom:20px;letter-spacing:-.5px}
+    .vision-col h3 em{font-family:var(--display-cn);font-style:normal;color:var(--blue);font-weight:600;font-size:.95em;letter-spacing:.3px}
+    .vision-col p{font-size:18px;color:var(--g500);line-height:1.95;font-weight:400}
+    .vision-col .vision-img{margin-top:32px;height:200px;overflow:hidden;position:relative}
+    .vision-col .vision-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(30,58,95,.18) 100%);pointer-events:none}
+    .vision-col .vision-img img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1) contrast(1.05) brightness(1.0)}
+    @media(max-width:1024px){.vision-layout{grid-template-columns:1fr;min-height:auto}.vision-col{padding:64px 0}.vision-col:first-child::after{display:none}.vision-col:first-child{border-bottom:1px solid var(--g200)}}
+    @media(max-width:640px){.vision-col{padding:40px 0}.vision-col h3{font-size:22px;line-height:1.4}.vision-col p{font-size:15px;line-height:1.85}.vision-col .vision-img{height:140px;margin-top:24px}.services .sec-title{font-size:36px;letter-spacing:-1px}.svc-header-right{font-size:15px;padding-top:24px;line-height:1.85}}
+
+    /* ── FAQ ── */
+    .faq{background:var(--off)}
+    .faq-list{display:flex;flex-direction:column;border-top:2px solid var(--ink)}
+    .faq-item{display:grid;grid-template-columns:64px 1fr 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--g200);align-items:start}
+    .faq-num{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:2px;color:var(--blue);padding-top:6px}
+    .faq-q{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.4}
+    .faq-q-en{display:block;font-family:var(--display);font-style:italic;font-size:14px;color:var(--g500);font-weight:400;margin-top:6px}
+    .faq-a{font-size:18px;color:var(--g500);line-height:1.95;font-weight:400}
+    @media(max-width:1024px){.faq-item{grid-template-columns:48px 1fr 1fr;gap:24px}}
+    @media(max-width:768px){.faq-item{grid-template-columns:40px 1fr;gap:16px;padding:24px 0}.faq-a{grid-column:2/3}.faq-q{font-size:16px}}
+    @media(max-width:480px){.faq-item{grid-template-columns:32px 1fr;gap:12px;padding:24px 0}.faq-q{font-size:15px}.faq-a{font-size:14px;line-height:1.85}}
+
+    /* ── CONTACT (form) ── */
+    .contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:96px;margin-top:64px}
+    .contact-info{padding:0}
+    .contact-info dt{font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:3px;text-transform:uppercase;margin-top:36px;padding-bottom:10px;border-bottom:1px solid var(--g200)}
+    .contact-info dt:first-child{margin-top:0}
+    .contact-info dd{font-family:var(--serif);font-size:20px;color:var(--ink);line-height:1.5;margin-top:12px;font-weight:600}
+    .contact-info dd small{display:block;font-family:var(--sans);font-size:13px;color:var(--g500);font-weight:400;margin-top:4px}
+    .form-group{margin-bottom:32px}
+    .form-group label{display:block;font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+    .form-group input,.form-group textarea,.form-group select{width:100%;border:0;border-bottom:1px solid var(--g300);background:transparent;padding:12px 0;font-family:var(--sans);font-size:18px;color:var(--ink);font-weight:400;transition:border-color .3s;border-radius:0;-webkit-appearance:none;appearance:none}
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-bottom-color:var(--blue)}
+    .form-group textarea{resize:vertical;min-height:100px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .form-submit{background:var(--ink);color:#fff;border:0;padding:18px 40px;font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:background .3s}
+    .form-submit:hover{background:var(--blue)}
+    @media(max-width:1024px){.contact-layout{grid-template-columns:1fr;gap:64px}}
+    @media(max-width:768px){.contact-layout{gap:48px}.form-row{grid-template-columns:1fr;gap:0}}
+    @media(max-width:480px){.contact-info dd{font-size:17px}.form-group{margin-bottom:20px}.form-group input,.form-group textarea,.form-group select{font-size:16px}.form-submit{width:100%;padding:16px 32px}}
+
+    /* ── CTA ── */
+    .cta{background:var(--off);color:var(--ink);padding:80px 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--rule-light);border-bottom:1px solid var(--rule-light);min-height:100vh;display:flex;align-items:center}
+    .cta::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));z-index:1}
+    .cta::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:240px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.6;z-index:1}
+    .cta h2{font-family:var(--serif-en);font-size:clamp(32px,5.2vw,68px);font-weight:900;line-height:1.12;letter-spacing:-1.5px;margin-bottom:20px;max-width:900px;margin-left:auto;margin-right:auto}
+    .cta h2 em{font-family:var(--display-cn);font-style:normal;font-weight:600;font-size:.85em;letter-spacing:.3px;background:linear-gradient(135deg,var(--gold) 0%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .cta p{font-size:18px;color:var(--g500);margin-bottom:48px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.85;font-weight:400}
+    .cta .btn-fill{background:linear-gradient(135deg,var(--blue) 0%,var(--gold) 100%);color:#fff;position:relative;z-index:1}
+    .cta .btn-fill:hover{background:linear-gradient(135deg,#2d5588 0%,#d4a850 100%)}
+    .cta .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--g300);margin-left:12px}@media(max-width:640px){.cta .btn-ghost{margin-left:0;margin-top:12px;display:block}.cta .btn-fill{display:block;margin:0 auto}}
+    .cta .btn-ghost:hover{border-color:var(--blue);color:var(--blue);background:rgba(30,58,95,.04)}
+
+    /* ── FOOTER ── */
+    .footer{background:var(--paper);color:var(--g500);padding:80px 0 0;position:relative}
+    .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue) 0%,var(--gold) 50%,var(--blue) 100%)}
+    .footer-in{max-width:1440px;margin:0 auto;padding:0 48px}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+    .footer-logo{height:75px;margin-bottom:14px}
+    .footer-brand{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:2px;letter-spacing:-.2px}
+    .footer-brand-en{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;font-family:var(--mono);opacity:.7}
+    .footer-top>p{font-size:18px;line-height:1.75;color:var(--g500);max-width:280px}
+    .footer-top h4{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);margin-bottom:18px;font-family:var(--mono);position:relative;padding-bottom:10px}
+    .footer-top h4::after{content:'';position:absolute;bottom:0;left:0;width:24px;height:2px;background:linear-gradient(90deg,var(--blue),var(--gold))}
+    .footer-links{display:flex;flex-direction:column;gap:10px}
+    .footer-links a{font-size:18px;color:var(--g500);transition:color .2s;font-weight:400}
+    .footer-links a:hover{color:var(--blue)}
+    .footer-bottom{padding:28px 0;border-top:1px solid var(--rule-light);display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.3px;color:var(--g400);font-family:var(--mono)}
+    @media(max-width:1024px){.footer-top{grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}}
+    @media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;gap:40px}.footer-bottom{flex-direction:column;gap:12px;text-align:center}}
+    @media(max-width:480px){.footer-top{grid-template-columns:1fr;gap:32px}.footer-in{padding:0 20px}.footer-logo{height:60px}}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-in">
+      <a href="#" class="nav-logo">
+        <img src="./images/sqRoUBvxwRc.png" alt="TOTAL OPC">
+        <span class="nav-brand">TOTAL OPC</span>
+      </a>
+      <div class="nav-right">
+        <a href="#services" class="nav-link">服務</a>
+        <a href="#method" class="nav-link">方法</a>
+        <a href="#why" class="nav-link">為什麼</a>
+        <a href="#about" class="nav-link">平臺</a>
+        <a href="#global" class="nav-link">全球</a>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="lang-code">HK</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" width="9" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.4"/></svg>
+          </button>
+          <div class="lang-menu" role="menu">
+        <a href="./cn.html" role="menuitem" class="lang-option"><span class="lang-option-code">CN</span><span class="lang-option-name">简体中文</span></a>
+        <a href="./uk.html" role="menuitem" class="lang-option"><span class="lang-option-code">UK</span><span class="lang-option-name">English</span></a>
+        <a href="./my.html" role="menuitem" class="lang-option"><span class="lang-option-code">MY</span><span class="lang-option-name">Bahasa Melayu</span></a>
+        <a href="./hk.html" role="menuitem" class="lang-option"><span class="lang-option-code">HK</span><span class="lang-option-name">繁體中文</span></a>
+        <a href="./th.html" role="menuitem" class="lang-option"><span class="lang-option-code">TH</span><span class="lang-option-name">ภาษาไทย</span></a>
+        <a href="./id.html" role="menuitem" class="lang-option"><span class="lang-option-code">ID</span><span class="lang-option-name">Bahasa Indonesia</span></a>
+        <a href="./jp.html" role="menuitem" class="lang-option"><span class="lang-option-code">JP</span><span class="lang-option-name">日本語</span></a>
+        <a href="./kr.html" role="menuitem" class="lang-option"><span class="lang-option-code">KR</span><span class="lang-option-name">한국어</span></a>
+          </div>
+        </div>
+        <a href="#contact" class="nav-cta">開始 →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero-v6">
+    <div class="hero-bg">
+      <img src="./images/FFEh_bP0gFc.jpg" alt="維多利亞港黃昏超高清全景">
+      <div class="hero-overlay"></div>
+      <div class="hero-overlay-warm"></div>
+    </div>
+    <div class="hero-geom hero-geom-tri"></div>
+    <div class="hero-geom hero-geom-line"></div>
+    <div class="hero-v6-content">
+      <div class="hero-v6-kicker">2026 年成立 · 馬來西亞·吉隆坡</div>
+      <h1 class="hero-v6-title">
+        <span class="hero-v6-line">一站式孵化 OPC 一人公司，</span>
+        <span class="hero-v6-line">AI 賦能個體創業，</span>
+        <span class="hero-v6-line">助力傳統企業財務合規與價值增長。</span>
+      </h1>
+      
+      <div class="hero-v6-foot">
+        <span class="hero-v6-line-mark"></span>
+        <span>下滑 · 探索平臺</span>
+        <span class="hero-v6-arrow">↓</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="sec services" id="services">
+    <div class="sec-in">
+      <div class="svc-header">
+        <div class="sec-label">服務</div>
+        <div class="sec-title">三個方向，<em>一條路徑。</em></div>
+        <div class="rule"></div>
+        <div class="svc-header-right">OPC + AI 培訓 · 企業診斷與孵化 · 資本運作——三個方向，三個階段，一條路徑。</div>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-card-phase">Phase 01 · Foundation</div>
+          <div class="svc-card-num">01</div>
+          <div class="svc-card-name">OPC + AI 培訓</div>
+          <div class="svc-card-desc">面向獨立創始人的 OPC 架構 + AI 能力培訓。教創始人用 OPC 架構運營公司，用 AI 工具放大個人產能——一人公司，機構級效率。</div>
+          <div class="svc-card-fee">
+            <span class="svc-card-fee-label">Programme</span>
+            課程 / 訓練營形式 · 面向 <strong>獨立創始人</strong> · 定價 <em>另行公佈</em>
+          </div>
+          <a class="svc-card-cta" href="#contact">瞭解 01<span>→</span></a>
+        </div>
+        <div class="svc-card">
+          <div class="svc-card-phase">Phase 02 · Incubation</div>
+          <div class="svc-card-num">02</div>
+          <div class="svc-card-name">企業診斷與孵化</div>
+          <div class="svc-card-desc">企業診斷 + 三年系統化陪跑。從公司架構、稅務規劃、運營流程到融資策略，陪伴一家企業從合規起步到價值實現。</div>
+          <div class="svc-card-fee">
+            <span class="svc-card-fee-label">Engagement</span>
+            <strong>孵化陪跑</strong> + 價值實現時 <em>100% 溢價賦能</em> · 註冊地：馬來西亞
+          </div>
+          <a class="svc-card-cta" href="#contact">瞭解 02<span>→</span></a>
+        </div>
+        <div class="svc-card">
+          <div class="svc-card-phase">Phase 03 · Capital</div>
+          <div class="svc-card-num">03</div>
+          <div class="svc-card-name">資本運作</div>
+          <div class="svc-card-desc">面向已完成 OPC 架構與運營基礎的企業主，對接高淨值資本網路，提供定製化融資方案、估值規劃與機構資源引介。</div>
+          <div class="svc-card-fee">
+            <span class="svc-card-fee-label">Advisory</span>
+            <strong>企業融資規劃</strong> + <em>100% 溢價賦能</em> · 對象：成熟運營企業
+          </div>
+          <a class="svc-card-cta" href="#contact">瞭解 03<span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMG DIVIDER -->
+  <div class="img-divider">
+    <img src="./images/0gaV8VjjIgk.jpg" alt="維港黃昏城市天際線">
+    <div class="caption"><span>圖 02 · 維港暮色 — 城市、海、光線</span></div>
+  </div>
+
+  <!-- METHOD -->
+  <section class="sec hub" id="method">
+    <div class="sec-in">
+      <div class="hub-layout">
+        <div class="hub-sticky">
+          <div class="hub-tag">做事原則</div>
+          <div class="hub-name">我們如何做事</div>
+          <p class="hub-desc">我們做事的方式，和這家公司的核心判斷一樣——結構優先於規模，合規先於速度，長期先於短期。這些原則不是口號，決定了我們和誰合作、我們造什麼、我們用什麼節奏走。</p>
+          <div class="hub-img">
+            <img src="./images/zLYIYqxf8pU.jpg" alt="維港夜景 IFC 與水面倒影">
+          </div>
+        </div>
+        <div>
+          <div class="feat-list">
+            <div class="feat">
+              <div class="feat-ico"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg></div>
+              <div>
+                <h4>結構優先於規模</h4>
+                <p>一人公司也可以擁有機構級的治理、合規與資本路徑。規模不是目的，結構才是。</p>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg></div>
+              <div>
+                <h4>合規先行</h4>
+                <p>所有業務模組以馬來西亞法律框架為起點。我們不在灰色地帶運作。</p>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div>
+                <h4>長期視角</h4>
+                <p>我們不為快速退出設計。我們為可持續結構設計。退出是結果，不是目標。</p>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-ico"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg></div>
+              <div>
+                <h4>制度化運營</h4>
+                <p>所有判斷透過結構化流程，不依賴個人決策。客戶與公司不因任何單一人員變動而受影響。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MALAYSIA -->
+  <section class="sec" id="why">
+    <div class="sec-in" style="padding:0;max-width:1440px">
+      <div style="padding:0 48px 64px">
+        <div class="sec-label">為什麼是馬來西亞</div>
+        <div class="sec-title">一片全球互聯的戰略地理樞紐</div>
+        <div class="rule"></div>
+      </div>
+      <div class="why-layout">
+        <div class="why-img-col">
+          <img src="./images/z4VkV54GNIg.jpg" alt="維港鳥瞰夜景">
+        </div>
+        <div class="why-content-col">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <h3>地理中心</h3>
+            <p>東南亞中心。3 小時內可達新加坡、雅加達、曼谷。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <h3>通用語言</h3>
+            <p>合同、備案、監管溝通均以英文進行。法定與商務語言以英文為主。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <h3>法律架構成熟</h3>
+            <p>《2016 年公司法》提供成熟控股公司架構。SSM 註冊體系高效透明。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-num">04</div>
+            <h3>資料保護框架</h3>
+            <p>《2010 年個人資料保護法》提供清晰的資料保護框架，符合國際主流合規標準。</p>
+          </div>
+          <div class="why-item">
+            <div class="why-num">05</div>
+            <h3>時區協同</h3>
+            <p>與北京時區完全一致，無時差，便於跨境業務協同。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-v7" id="about">
+    <div class="about-v7-header">
+      <div class="about-v7-num">01</div>
+      <div class="about-v7-label">PLATFORM INTRODUCTION</div>
+      <div class="about-v7-rule"></div>
+    </div>
+    <div class="about-v7-body">
+      <div class="about-v7-title-col">
+        <div class="about-v7-kicker">平臺介紹</div>
+        <h2 class="about-v7-title">
+          <span class="line-1">一人公司</span>
+          <span class="line-2">不再孤軍奮戰。</span>
+        </h2>
+      </div>
+      <div class="about-v7-info-col">
+        <div class="about-v7-manifesto">
+          <p>一個人創辦公司，應獲得與團隊同等的支撐。Total OPC 為個體創業者提供結構化陪跑 —— 財務合規、價值放大、資源對接，以及一份清晰的成長路徑。</p>
+        </div>
+        <div class="about-v7-approach">
+          <div class="approach-title">A.PPROACH</div>
+          <ul class="approach-list">
+            <li>
+              <span class="approach-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5b4fc4" stroke-width="1.5"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span>
+              <span class="approach-name">財務合規</span>
+              <span class="approach-text">企業架構與跨境合規</span>
+            </li>
+            <li>
+              <span class="approach-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5b4fc4" stroke-width="1.5"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></span>
+              <span class="approach-name">價值放大</span>
+              <span class="approach-text">100% 溢價賦能</span>
+            </li>
+            <li>
+              <span class="approach-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5b4fc4" stroke-width="1.5"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5L11 16M16 7.5L13 16M8.5 6h7"/></svg></span>
+              <span class="approach-name">資源對接</span>
+              <span class="approach-text">多邊生態全鏈路陪跑</span>
+            </li>
+          </ul>
+        </div>
+        <div class="about-v7-meta-grid">
+          <div class="about-v7-meta-item">
+            <div class="meta-label">EST.</div>
+            <div class="meta-value">2026.06.09</div>
+          </div>
+          <div class="about-v7-meta-item">
+            <div class="meta-label">BASED</div>
+            <div class="meta-value">MALAYSIA / KL</div>
+          </div>
+          <div class="about-v7-meta-item">
+            <div class="meta-label">SSM</div>
+            <div class="meta-value">202601023366</div>
+          </div>
+          <div class="about-v7-meta-item">
+            <div class="meta-label">SCOPE</div>
+            <div class="meta-value">OPC INCUBATION</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-v7-illustration" aria-hidden="true">
+      <div class="illu-outer"></div>
+      <div class="illu-ring"></div>
+      <div class="illu-line" style="transform:rotate(0deg)"></div>
+      <div class="illu-line alt" style="transform:rotate(60deg)"></div>
+      <div class="illu-line" style="transform:rotate(120deg)"></div>
+      <div class="illu-line alt" style="transform:rotate(180deg)"></div>
+      <div class="illu-line" style="transform:rotate(240deg)"></div>
+      <div class="illu-line alt" style="transform:rotate(300deg)"></div>
+      <div class="illu-center"></div>
+      <div class="illu-node" style="transform:rotate(30deg) translate(100px)"></div>
+      <div class="illu-node gold" style="transform:rotate(90deg) translate(100px)"></div>
+      <div class="illu-node square" style="transform:rotate(150deg) translate(100px)"></div>
+      <div class="illu-node" style="transform:rotate(210deg) translate(100px)"></div>
+      <div class="illu-node gold" style="transform:rotate(270deg) translate(100px)"></div>
+      <div class="illu-node triangle" style="transform:rotate(330deg) translate(100px)"></div>
+    </div>
+  </section>
+
+  <!-- GLOBAL (dark) -->
+  <section class="sec global" id="global" style="position:relative">
+    <div style="position:absolute;top:60px;left:48px;width:40px;height:1px;background:var(--gold);opacity:.4;z-index:2"></div>
+    <div style="position:absolute;top:60px;left:100px;width:8px;height:8px;border:1px solid var(--gold);transform:rotate(45deg);z-index:2"></div>
+    <div class="global-bg">
+      <img src="./images/x9c9UHyChrk.jpg" alt="維港夜景中銀大廈">
+    </div>
+    <div class="global-content">
+      <div class="sec-in">
+        <div class="sec-label">全球佈局</div>
+        <div class="sec-title">依託馬來西亞地緣樞紐優勢，<br>構築 <em>全球化商業通路。</em></div>
+        <div class="rule"></div>
+        <p class="global-intro">以馬來西亞為運營總部，業務輻射中國大陸、東南亞及全球主要離岸註冊地——為獨立創始人提供跨境架構、資本對接與機構引介。</p>
+        <div class="global-grid">
+          <div class="global-item">
+            <div class="global-code">MY</div>
+            <div class="global-line"></div>
+            <h3>馬來西亞</h3>
+            <p>運營總部，吉隆坡</p>
+          </div>
+          <div class="global-item">
+            <div class="global-code">HK</div>
+            <div class="global-line"></div>
+            <h3>中國香港</h3>
+            <p>跨境架構與資本樞紐</p>
+          </div>
+          <div class="global-item">
+            <div class="global-code">CN</div>
+            <div class="global-line"></div>
+            <h3>中國大陸</h3>
+            <p>粵港澳大灣區市場與產業</p>
+          </div>
+          <div class="global-item">
+            <div class="global-code">SG</div>
+            <div class="global-line"></div>
+            <h3>新加坡</h3>
+            <p>東南亞金融與合規節點</p>
+          </div>
+          <div class="global-item">
+            <div class="global-code">BVI</div>
+            <div class="global-line"></div>
+            <h3>BVI / 開曼</h3>
+            <p>離岸架構與控股公司</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="sec" id="vision">
+    <div class="sec-in" style="padding:0;max-width:1440px">
+      <div class="vision-layout">
+        <div class="vision-col">
+          <div class="sec-label">願景</div>
+          <h3>成為下一代<br>獨立創始人的<br><em>OPC 孵化平臺。</em></h3>
+          <p>讓每一位獨立創始人，在 AI 時代，用一人公司的輕盈，建立機構級的全球競爭力。</p>
+          <div class="vision-img">
+            <img src="./images/0b-RleWtZHI.jpg" alt="維港黃昏與公路光軌">
+          </div>
+        </div>
+        <div class="vision-col">
+          <div class="sec-label">使命</div>
+          <h3>三個方向，<br>一個 <em>閉環。</em></h3>
+          <p>用 OPC 搭建結構，用 AI 放大效率，用資本實現價值。結構、效率、價值——一個不漏。</p>
+          <div class="vision-img">
+            <img src="./images/6DVN34FlBOA.jpg" alt="維港夜景 IFC 鳥瞰">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq" id="faq">
+    <div class="sec-in">
+      <div class="svc-header">
+        <div>
+          <div class="sec-label">常見問題</div>
+          <div class="sec-title">八個問題。<br><em>經常被問到。</em></div>
+          <div class="rule"></div>
+        </div>
+        <div class="svc-header-right">我們最常被問到的 8 個問題——每條 1 句話答完。</div>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-num">01</div>
+          <div class="faq-q">什麼是 OPC？為什麼選 OPC？</div>
+          <div class="faq-a">OPC = One-Person Company，一人公司。結構清晰、治理簡單、決策獨立。在合規的前提下，OPC 是獨立創始人最穩健的法律載體。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-num">02</div>
+          <div class="faq-q">你們的 AI 培訓教什麼？</div>
+          <div class="faq-a">面向獨立創始人的 AI 運營能力培訓——從工作流自動化、AI 工具選型、運營流程 AI 化，到 OPC 公司的 AI 治理結構。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-num">03</div>
+          <div class="faq-q">企業診斷包含什麼內容？</div>
+          <div class="faq-a">包含公司架構診斷、稅務規劃審查、運營流程評估、融資準備度評估。診斷結果形成可執行的三年陪跑路徑。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-num">04</div>
+          <div class="faq-q">三年孵化陪跑的具體內容？</div>
+          <div class="faq-a">覆蓋公司架構、稅務規劃、運營陪跑、融資策略四個階段，每季度提供結構化進展評估與策略調整。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-num">05</div>
+          <div class="faq-q">資本運作的對接標準？</div>
+          <div class="faq-a">需已完成 OPC 架構與至少 12 個月穩定運營，營收或資產達到機構投資標準。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-num">06</div>
+          <div class="faq-q">三項服務可以獨立選擇嗎？</div>
+          <div class="faq-a">可以。OPC + AI 培訓、企業診斷與孵化、資本運作均為獨立服務線，但三者組合可形成完整價值閉環。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-num">07</div>
+          <div class="faq-q">課程什麼時候正式上線？</div>
+          <div class="faq-a">OPC + AI 培訓首個完整課程計劃於 2026 年第四季度上線。具體日期與定價將另行公告。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-num">08</div>
+          <div class="faq-q">如何開始？</div>
+          <div class="faq-a">提交下方表單，或直接致電 +60 12 928 7511。團隊將在兩個工作日內聯絡您。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec" id="contact">
+    <div class="sec-in">
+      <div class="svc-header">
+        <div>
+          <div class="sec-label">聯絡我們</div>
+          <div class="sec-title">開啟<br><em>一段對話。</em></div>
+          <div class="rule"></div>
+        </div>
+        <div class="svc-header-right">我們優先與認真考慮長期結構化陪跑的獨立創始人對話。請提交基本資訊，團隊將在兩個工作日內聯絡您。</div>
+      </div>
+      <div class="contact-layout">
+        <dl class="contact-info">
+          <dt>負責人</dt>
+          <dd>Total OPC 團隊<small>official@jiahe-ai.cc</small></dd>
+          <dt>電話</dt>
+          <dd>+60 12 928 7511<small>WhatsApp / 手機</small></dd>
+          <dt>工作時間</dt>
+          <dd>週一 — 週五<small>09:00 — 18:00 馬來西亞時間</small></dd>
+          <dt>註冊辦公地</dt>
+          <dd>吉隆坡<small>詳細地址即將公佈</small></dd>
+        </dl>
+        <form onsubmit="event.preventDefault(); this.querySelector('.form-submit').textContent='已收到 — 我們將盡快與您聯絡。'; this.querySelector('.form-submit').disabled=true; this.querySelector('.form-submit').style.background='var(--blue)';">
+          <div class="form-row">
+            <div class="form-group"><label for="contact-name">姓名</label><input id="contact-name" name="name" type="text" required></div>
+            <div class="form-group"><label for="contact-company">公司</label><input id="contact-company" name="company" type="text"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="contact-email">郵箱</label><input id="contact-email" name="email" type="email" required></div>
+            <div class="form-group"><label for="contact-phone">電話</label><input id="contact-phone" name="phone" type="tel"></div>
+          </div>
+          <div class="form-group">
+            <label for="contact-interest">關注方向</label>
+            <select id="contact-interest" name="interest">
+              <option>OPC + AI 培訓</option>
+              <option>企業診斷與孵化</option>
+              <option>資本運作</option>
+              <option>一般諮詢</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="contact-message">留言</label><textarea id="contact-message" name="message" rows="4" required></textarea></div>
+          <button type="submit" class="form-submit">提交諮詢</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="sec-in" style="position:relative">
+      <h2>一人企業孵化，<br>全鏈路資本<em>賦能。</em></h2>
+      <p>從孵化到結構到資本——一個閉環。從一段對話開始。</p>
+      <a href="#contact" class="btn btn-fill">開啟一段對話 →</a>
+      <a href="tel:+60129287511" class="btn btn-ghost">+60 12 928 7511</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-in">
+      <div class="footer-top">
+        <div>
+          <img src="./images/sqRoUBvxwRc.png" alt="TOTAL OPC" class="footer-logo">
+          <div class="footer-brand">TOTAL OPC</div>
+          <div class="footer-brand-en">OPC INCUBATION PLATFORM</div>
+          <p>服務以獨立為戰略的創始人。從結構到運營到資本——一個閉環。</p>
+        </div>
+        <div>
+          <h4>三大方向</h4>
+          <div class="footer-links">
+            <a href="#services">OPC + AI 培訓</a>
+            <a href="#services">企業診斷與孵化</a>
+            <a href="#services">資本運作</a>
+          </div>
+        </div>
+        <div>
+          <h4>平臺</h4>
+          <div class="footer-links">
+            <a href="#about">平臺介紹</a>
+            <a href="#method">做事方式</a>
+            <a href="#global">全球佈局</a>
+            <a href="#vision">願景與使命</a>
+            <a href="#faq">常見問題</a>
+          </div>
+        </div>
+        <div>
+          <h4>法律</h4>
+          <div class="footer-links">
+            <a href="#">隱私政策</a>
+            <a href="#">服務條款</a>
+            <a href="#">免責宣告</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 TOTAL OPC SDN. BHD. · 保留所有權利</span>
+        <span>SSM 202601023366 (1685463-A) · 馬來西亞</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const href=a.getAttribute('href');
+        if(href==='#')return;
+        const t=document.querySelector(href);
+        if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+      });
+    });
+    // Nav scroll effect
+    const nav=document.getElementById('mainNav');
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY>80)nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+    // Language switcher dropdown (v8.1)
+    const langSwitcher=document.getElementById('langSwitcher');
+    if(langSwitcher){
+      const langBtn=langSwitcher.querySelector('.lang-btn');
+      langBtn.addEventListener('click',e=>{
+        e.stopPropagation();
+        const isOpen=langSwitcher.classList.toggle('open');
+        langBtn.setAttribute('aria-expanded',isOpen?'true':'false');
+      });
+      document.addEventListener('click',e=>{
+        if(!langSwitcher.contains(e.target)){
+          langSwitcher.classList.remove('open');
+          langBtn.setAttribute('aria-expanded','false');
+        }
+      });
+      document.addEventListener('keydown',e=>{
+        if(e.key==='Escape'&&langSwitcher.classList.contains('open')){
+          langSwitcher.classList.remove('open');
+          langBtn.setAttribute('aria-expanded','false');
+          langBtn.focus();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
